@@ -7,12 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js"
-
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
   "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
   }
 }

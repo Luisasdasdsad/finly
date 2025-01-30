@@ -1,23 +1,29 @@
-const http = require('http');
+// index.js
+const express = require("express");
+const morgan = require("morgan");
+
+const app = express();
+
+app.use(morgan("dev"));
+
+app.get("/", (req, res) => {
+  res.send("Hello From Node.js");
+});
+
+app.get("/contact", (req, res) => {
+  res.send("The Contact Page");
+});
+
+app.get("/about", (req, res) => {
+  res.send("The About Page");
+});
+
+app.get("*", (req, res) => {
+  res.status(404).send("Not Found");
+});
 
 const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-  const { url } = req;
-  console.log(url);
-  if (url === '/') {
-    res.end('Hello From Node.js');
-  } else if (url === '/contact') {
-    res.end('The Contact Page');
-  } else if (url === '/about') {
-    res.end('The About Page');
-  } else {
-    res.writeHead(404);
-    res.end('Not Found');
-  }
-});
-
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-  
